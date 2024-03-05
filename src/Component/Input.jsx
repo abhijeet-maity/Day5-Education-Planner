@@ -34,8 +34,8 @@ function Input() {
     const newValue=data.filter((num,index)=>{
           return e!=index;
        })
-
-     
+       setData(newValue)
+       console.log(newValue);
        
   };
   useEffect(() => {
