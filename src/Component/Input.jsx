@@ -4,6 +4,12 @@ function Input() {
   const [name, setName] = useState('');
   const [hour, setHour] = useState(null);
   const [data, setData] = useState([]);
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem('data'));
+    if (savedData) {
+      setData(savedData);
+    }
+  }, []);
 
   const handleChange = (e) => {
     setName(e.target.value);
@@ -28,11 +34,13 @@ function Input() {
     const newValue=data.filter((num,index)=>{
           return e!=index;
        })
-       setData(newValue)
-       console.log(newValue);
+
+     
        
   };
- 
+  useEffect(() => {
+    localStorage.setItem('data', JSON.stringify(data));
+  }, [data]);
 
   return (
     <div className='box'>
