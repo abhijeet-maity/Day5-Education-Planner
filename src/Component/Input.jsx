@@ -5,9 +5,9 @@ function Input() {
   const [hour, setHour] = useState(null);
   const [data, setData] = useState([]);
   useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem('data'));
-    if (savedData) {
-      setData(savedData);
+    const localStoragedData = JSON.parse(localStorage.getItem('data'));
+    if (localStoragedData) {
+      setData(localStoragedData);
     }
   }, []);
 
@@ -32,7 +32,7 @@ function Input() {
   
   const handleDelete = (e) => {
     const newValue=data.filter((num,index)=>{
-          return e!=index;
+          return e!==index;
        })
        setData(newValue)
        console.log(newValue);
@@ -57,7 +57,6 @@ function Input() {
         data.map((item, index) => (
           <Card key={index} Name={item.Name} Time={item.Time} Id={index}  handleDelete={handleDelete}/>
         ))
-
       }
      
       
